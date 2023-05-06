@@ -15,15 +15,15 @@
 </head>
 
 <body>
-    <h1 class="text-3xl font-bold underline bg-blue-500">
-        Hello world!
-    </h1>
-    <div class="p-5 bg-blue-300">
-        <livewire:table.daftar-produk/>
+    <div class="bg-[#A72121] h-screen w-screen flex justify-center items-center">
+        <livewire:form.login/>
     </div>
 
     @livewireScripts
     <script src="{{ asset('assets/flowbite/dist/flowbite.js') }}"></script>
+    <script src="https://code.iconify.design/3/3.0.0/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
+    <script src="{{ asset('assets/js/showPassword.js')}}"></script>
 </body>
 
 

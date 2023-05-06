@@ -26,6 +26,7 @@
             </div>
             <div class="p-5 space-y-5">
                 <livewire:table.daftar-produk/>
+                <livewire:modal.tambah-produk/>
             </div>
         </div>
     </div>
@@ -36,6 +37,7 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.1/iconify-icon.min.js"></script>
     <script src="{{ asset('assets/js/responsiveSidebar.js')}}"></script>
     <script src="{{ asset('assets/js/activeSidebarAdmin.js')}}"></script>
+    <script src="{{ asset('assets/js/previewImage.js')}}"></script>
 </body>
 
 

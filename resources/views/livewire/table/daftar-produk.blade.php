@@ -13,7 +13,7 @@
                 <span class="iconify" data-icon="material-symbols:upload-file-rounded"></span>
                 Import Produk
             </button>   
-            <button type="button" class="text-white bg-[#DD3333] rounded-md px-4 py-2 text-sm flex items-center gap-3">
+            <button data-modal-toggle="tambah-produk" type="button" class="text-white bg-[#DD3333] rounded-md px-4 py-2 text-sm flex items-center gap-3">
                 <span class="iconify" data-icon="ic:round-plus"></span>
                 Tambah Produk
             </button>

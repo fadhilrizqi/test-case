@@ -27,6 +27,7 @@
             <div class="p-5 space-y-5">
                 <livewire:table.daftar-produk/>
                 <livewire:modal.tambah-produk/>
+                <livewire:modal.import-produk/>
             </div>
         </div>
     </div>
@@ -38,6 +39,15 @@
     <script src="{{ asset('assets/js/responsiveSidebar.js')}}"></script>
     <script src="{{ asset('assets/js/activeSidebarAdmin.js')}}"></script>
     <script src="{{ asset('assets/js/previewImage.js')}}"></script>
+
+    {{-- js preview name import produk --}}
+    <script>
+        $('#file-upload').change(function () {
+            var i = $(this).prev('label').clone();
+            var file = $('#file-upload')[0].files[0].name;
+            $(this).prev('label').text(file);
+        });
+    </script>
 </body>
 
 

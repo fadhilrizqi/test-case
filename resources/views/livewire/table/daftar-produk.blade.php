@@ -9,7 +9,7 @@
                 <span class="iconify" data-icon="mdi:file-download"></span>
                 Export Produk
             </button>
-            <button type="button" class="text-[#3377DD] border border-[#3377DD] bg-white rounded-md px-4 py-2 text-sm flex items-center gap-3">
+            <button data-modal-toggle="import-produk" type="button" class="text-[#3377DD] border border-[#3377DD] bg-white rounded-md px-4 py-2 text-sm flex items-center gap-3">
                 <span class="iconify" data-icon="material-symbols:upload-file-rounded"></span>
                 Import Produk
             </button>   

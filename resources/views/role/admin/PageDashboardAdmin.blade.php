@@ -28,6 +28,8 @@
                 <livewire:table.daftar-produk/>
                 <livewire:modal.tambah-produk/>
                 <livewire:modal.import-produk/>
+                <livewire:modal.edit-produk/>
+                <livewire:modal.hapus-produk/>
             </div>
         </div>
     </div>

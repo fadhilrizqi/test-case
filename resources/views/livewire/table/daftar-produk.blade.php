@@ -78,13 +78,13 @@
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <button data-modal-toggle="edit-produk" type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         <span class="iconify w-5 h-5" data-icon="ph:pencil-simple-line-duotone"></span>
                                         Edit
                                     </button>
                                 </li>
                                 <li>
-                                    <button type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <button data-modal-toggle="hapus-produk" type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         <span class="iconify w-5 h-5" data-icon="ic:twotone-delete"></span>
                                         Hapus
                                     </button>

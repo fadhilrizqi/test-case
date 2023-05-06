@@ -16,8 +16,10 @@
                 <iconify-icon id="toggler" icon="akar-icons:eye"></iconify-icon>
             </div>
         </div>
-        <button type="button" class="bg-white text-gray-900 w-full rounded-full py-1.5 font-medium">
-            Masuk
-        </button>
+        <a href="{{route('dashboardAdmin')}}">
+            <button type="button" class="bg-white text-gray-900 w-full rounded-full py-1.5 font-medium">
+                Masuk
+            </button>
+        </a>
     </div>
 </form>

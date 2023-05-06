@@ -1,47 +1,160 @@
+<div class="relative bg-white p-5 rounded-xl overflow-hidden">
+    <div class="flex flex-col md:flex-row gap-4 md:items-center md:justify-between py-3">
+        <div class="flex flex-row justify-between items-center md:items-start md:flex-col">
+            <h1 class="font-bold text-xl text-black">Daftar Produk</h1>
+            <p class="text-sm text-gray-500">100 produk</p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-5 items-center">
+            <button type="button" class="text-[#33DD58] border border-[#33DD58] bg-white rounded-md px-4 py-2 text-sm flex items-center gap-3">
+                <span class="iconify" data-icon="mdi:file-download"></span>
+                Export Produk
+            </button>
+            <button type="button" class="text-[#3377DD] border border-[#3377DD] bg-white rounded-md px-4 py-2 text-sm flex items-center gap-3">
+                <span class="iconify" data-icon="material-symbols:upload-file-rounded"></span>
+                Import Produk
+            </button>   
+            <button type="button" class="text-white bg-[#DD3333] rounded-md px-4 py-2 text-sm flex items-center gap-3">
+                <span class="iconify" data-icon="ic:round-plus"></span>
+                Tambah Produk
+            </button>
+        </div>
+    </div>
 
-<div id="indicators-carousel" class="relative w-full" data-carousel="static">
-    <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-         <!-- Item 1 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 2 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 3 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 4 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
-        <!-- Item 5 -->
-        <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        </div>
+    <div class="overflow-auto h-full">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-500 uppercase bg-white border-b">
+                <tr>
+                    <th scope="col" class="py-3 px-6 truncate">
+                        Produk
+                    </th>
+                    <th scope="col" class="py-3 px-6 truncate">
+                        Deskripsi
+                    </th>
+                    <th scope="col" class="py-3 px-6 truncate">
+                        Kategori
+                    </th>
+                    <th scope="col" class="py-3 px-6 truncate">
+                        Harga
+                    </th>
+                    <th scope="col" class="py-3 px-6 truncate">
+                        Aksi
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-900">
+                <tr class="bg-white border-b">
+                    <td class="py-4 px-6">
+                        <div class="flex flex-row items-center font-semibold gap-5">
+                            <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-white border">
+                                <img class="w-8 h-8" src="{{ asset('assets/images/produk/semen.png') }} " alt="">
+                            </div>
+                            <div>
+                                <h1 class="truncate">Semen Dynamix 40kg</h1>
+                                <span class="text-gray-500 text-xs">SKU: P001</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="py-4 px-6 truncate font-semibold max-w-xs">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut adipisci amet, maxime tempora enim nisi labore assumenda delectus! Quasi maxime libero in ipsam alias magnam at dolore est repudiandae recusandae.
+                    </td>
+                    <td class="py-4 px-6 truncate font-semibold">
+                        Material Bangunan
+                    </td>
+                    <td class="py-4 px-6 truncate font-semibold">
+                        Rp50.000
+                    </td>
+                    <td class="py-4 px-6 truncate font-semibold">
+                        <button id="dropdownMenuDetailToko" data-dropdown-toggle="dropdownDetailToko" class="inline-flex items-center p-1 text-sm font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600" type="button"> 
+                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
+                        </button>
+                          
+                        <!-- Dropdown menu -->
+                        <div id="dropdownDetailToko" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-2 text-sm text-gray-600 dark:text-gray-200" aria-labelledby="dropdownMenuDetailToko">
+                                <li>
+                                    <button type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        <span class="iconify w-5 h-5" data-icon="solar:document-text-bold-duotone"></span>
+                                        Detail
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        <span class="iconify w-5 h-5" data-icon="ph:pencil-simple-line-duotone"></span>
+                                        Edit
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                        <span class="iconify w-5 h-5" data-icon="ic:twotone-delete"></span>
+                                        Hapus
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <!-- Slider indicators -->
-    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+
+    <div class="text-sm flex justify-center gap-5 flex-col md:flex-row md:justify-between text-gray-700 bg-white rounded-b-lg px-5 pt-5">
+        <div class="flex items-center gap-4">
+            Show
+            <select class="bg-gray-100 border  border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-16 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+               <option selected value="">5</option>
+               <option value="">10</option>
+               <option value="">20</option>
+            </select>
+            <p>of <span class="font-bold">100</span> </p>
+        </div>
+        <div>  
+            <nav aria-label="Page navigation example">
+                <ul class="inline-flex items-center">
+                    <li>
+                        <a href="#"
+                            class="block py-2 ml-0 leading-tight text-gray-500 hover:text-cyan-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <span class="sr-only">Previous</span>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-current="page"
+                            class="py-2 px-3  ml-2 rounded-lg leading-tight text-white bg-red-600 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700">1</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="py-2 px-3  ml-2 rounded-lg leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700">2</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="py-2 px-3  ml-2 rounded-lg leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700">3</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="py-2 px-3  ml-2 rounded-lg leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">...</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="py-2 px-3  ml-2 rounded-lg leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">10</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 ml-2 leading-tight text-gray-500 hover:text-cyan-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <span class="sr-only">Next</span>
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div></div>
     </div>
-    <!-- Slider controls -->
-    <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-            <span class="sr-only">Previous</span>
-        </span>
-    </button>
-    <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-            <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-            <span class="sr-only">Next</span>
-        </span>
-    </button>
 </div>

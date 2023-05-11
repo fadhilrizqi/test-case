@@ -5,11 +5,11 @@
             <p class="text-sm text-gray-500">100 produk</p>
         </div>
         <div class="flex flex-col md:flex-row gap-5 items-center">
-            <button type="button"
+            <a type="button" href="{{ route('product-export') }}"
                 class="text-[#33DD58] border border-[#33DD58] bg-white rounded-md px-4 py-2 text-sm flex items-center gap-3">
                 <span class="iconify" data-icon="mdi:file-download"></span>
                 Export Produk
-            </button>
+            </a>
             <button data-modal-toggle="import-produk" type="button"
                 class="text-[#3377DD] border border-[#3377DD] bg-white rounded-md px-4 py-2 text-sm flex items-center gap-3">
                 <span class="iconify" data-icon="material-symbols:upload-file-rounded"></span>
@@ -146,7 +146,6 @@
                                         </path>
                                     </svg>
                                 </button>
-
                                 <!-- Dropdown menu -->
                                 <div id="dropdownDetailToko"
                                     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
@@ -161,12 +160,13 @@
                                             </button>
                                         </li>
                                         <li>
-                                            <button data-modal-toggle="edit-produk" type="button"
+                                            <a data-modal-toggle="edit-produk" type="button"
+                                                href="{{ route('product-edit', $dt->id) }}"
                                                 class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                 <span class="iconify w-5 h-5"
                                                     data-icon="ph:pencil-simple-line-duotone"></span>
                                                 Edit
-                                            </button>
+                                            </a>
                                         </li>
                                         <li>
                                             <button data-modal-toggle="hapus-produk" type="button"

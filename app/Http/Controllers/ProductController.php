@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class ProductController extends Controller
 {
@@ -74,9 +75,11 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProductModel $productModel)
+    public function edit(Request $request)
     {
         //
+        $data = ProductModel::where('id', $request->id)->first();
+        return response()->view('livewire.modal.edit-produk', compact('data'));
     }
 
     /**
@@ -85,6 +88,35 @@ class ProductController extends Controller
     public function update(Request $request, ProductModel $productModel)
     {
         //
+        $this->validate($request, [
+            'image' => 'image|nullable|1999',
+            'nama-produk' => 'required',
+            'sku-produk' => 'required',
+            'desc' => 'required',
+            'kategori' => 'required',
+            'harga-produk' => 'required',
+        ]);
+
+        if ($request->hasFile('image')) {
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $filenameSimpan = $filename . '_' . time() . '.' . $extension;
+            $path = $request->file('image')->storeAs('public/product_image', $filenameSimpan);
+        } else {
+            $filenameSimpan = 'noimage.jpg';
+        }
+
+        ProductModel::where('id', $request->id)->update([
+            'image' => $filenameSimpan,
+            'nama' => $request->input('nama-produk'),
+            'sku' => $request->input('sku-produk'),
+            'desc' => $request->input('desc'),
+            'kategori' => $request->input('kategori'),
+            'harga' => $request->input('harga-produk'),
+        ]);
+
+        return redirect()->route('dashboardAdmin')->with('messages', 'Data Berhasil Diubah');
     }
 
     /**
@@ -93,5 +125,27 @@ class ProductController extends Controller
     public function destroy(ProductModel $productModel)
     {
         //
+        $productModel->delete();
+        return redirect()->route('dashboardAdmin')->with('messages', 'Data Berhasil Dihapus');
+    }
+
+    public function export()
+    {
+        //
+        return (new FastExcel(ProductModel::all()))->download('product.xlsx');
+    }
+
+    public function import()
+    {
+        //
+        $product = (new FastExcel)->import('file-upload.xlsx', function ($line) {
+            return ProductModel::create([
+                'nama' => $line['nama-produk'],
+                'sku' => $line['sku-produk'],
+                'desc' => $line['desc'],
+                'kategori' => $line['kategori'],
+                'harga' => $line['harga-produk'],
+            ]);
+        });
     }
 }

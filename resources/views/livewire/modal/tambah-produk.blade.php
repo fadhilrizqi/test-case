@@ -23,7 +23,8 @@
             </div>
             <!-- Modal body -->
             <div class="px-5">
-                <form class="max-h-96 overflow-y-auto px-1" action="" method="POST" enctype="multipart/form-data">
+                <form class="max-h-96 overflow-y-auto px-1" action="{{ route('product-store') }}" method="POST"
+                    enctype="multipart/form-data">
                     <div class="mb-6 w-max">
                         <span class="text-gray-900 font-medium px-1">Foto Produk</span>
                         <label type="file" name="image-product" id="image-product" required>

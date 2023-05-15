@@ -1,7 +1,7 @@
 <form class="max-h-96 overflow-y-auto px-1" action="">
     <div class="mb-5 w-max">
         <div class="w-28 h-28 flex items-center justify-center rounded-lg bg-white border">
-            <img class="w-24 h-24" wire.mode="gambar" src="{{ asset('storage/product_image/' . $gambar) }}" alt="">
+            <img class="w-24 h-24" wire:model="gambar" src="{{ asset('storage/product_image/' . $gambar) }}" alt="">
         </div>
         <div class="mb-5">
             <h1 class="font-bold text-gray-700" wire:model="nama">{{ $nama }}</h1>

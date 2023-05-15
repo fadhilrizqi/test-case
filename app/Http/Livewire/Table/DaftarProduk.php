@@ -101,7 +101,7 @@ class DaftarProduk extends Component
         $this->detailMode = true;
         $produk = ProductModel::where('id', $id)->first();
         $this->produk_id = $id;
-        $this->gambar = $produk->gambar;
+        $this->gambar = $produk->image;
         $this->nama = $produk->nama;
         $this->sku = $produk->sku;
         $this->desc = $produk->desc;
@@ -114,7 +114,7 @@ class DaftarProduk extends Component
         $this->updateMode = true;
         $produk = ProductModel::where('id', $id)->first();
         $this->produk_id = $id;
-        $this->gambar = $produk->gambar;
+        $this->gambar = $produk->image;
         $this->nama = $produk->nama;
         $this->sku = $produk->sku;
         $this->desc = $produk->desc;
@@ -151,7 +151,7 @@ class DaftarProduk extends Component
         $this->deleteMode = true;
         $produk = ProductModel::where('id', $id)->first();
         $this->produk_id = $id;
-        $this->gambar = $produk->gambar;
+        $this->gambar = $produk->image;
         $this->nama = $produk->nama;
         $this->sku = $produk->sku;
         $this->desc = $produk->desc;

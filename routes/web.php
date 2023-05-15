@@ -33,3 +33,10 @@ Route::put('/update', [ProductController::class, 'update'])->name('product-updat
 Route::post('/destroy/{id}', [ProductController::class, 'destroy'])->name('product-destroy');
 Route::get('/import', [ProductController::class, 'import'])->name('product-import');
 Route::get('/export', [ProductController::class, 'export'])->name('product-export');
+
+Route::get('/show/{id}', [\App\Http\Livewire\Modal\DetailProduk::class, 'showProduct'])->name('show-product');
+Route::get('/edit/{id}', [\App\Http\Livewire\Modal\EditProduk::class, 'editProduct'])->name('edit-product');
+Route::get('/delete/{id}', [\App\Http\Livewire\Modal\HapusProduk::class, 'deleteProduct'])->name('delete-product');
+
+
+Route::get('/lihat/{id}', [\App\Http\Livewire\Modal\DetailProduk::class,'mount'])->name('lihat-produk');

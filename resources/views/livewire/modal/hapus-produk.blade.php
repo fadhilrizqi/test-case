@@ -1,6 +1,4 @@
-<form action="{{ route('product-destroy', $data->id ?? '') }}" method="POST">
-    @csrf
-    @method('DELETE')
+<form>
     <div id="hapus-produk" tabindex="-1"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full justify-center items-center"
         aria-hidden="true">
@@ -16,7 +14,8 @@
                             class="text-white text-sm px-10 py-2 bg-gray-400 rounded-lg">
                             Batal
                         </button>
-                        <button data-modal-toggle="hapus-produk" type="submit"
+                        <button data-modal-toggle="hapus-produk" type="button"
+                            wire:click.prevent="delete()"
                             class="text-white text-sm px-10 py-2 bg-red-600 rounded-lg">
                             Hapus
                         </button>

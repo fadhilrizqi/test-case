@@ -1,4 +1,21 @@
 <div class="relative bg-white p-5 rounded-xl overflow-hidden">
+
+    @if ($addMode)
+        @include('livewire.table.add')
+    @endif
+
+    @if ($updateMode)
+        @include('livewire.table.update')
+    @endif
+
+    @if ($detailMode)
+        @include('livewire.table.detail')
+    @endif
+
+    @if ($deleteMode)
+        @include('livewire.table.delete')
+    @endif
+
     <div class="flex flex-col md:flex-row gap-4 md:items-center md:justify-between py-3">
         <div class="flex flex-row justify-between items-center md:items-start md:flex-col">
             <h1 class="font-bold text-xl text-black">Daftar Produk</h1>
@@ -15,7 +32,7 @@
                 <span class="iconify" data-icon="material-symbols:upload-file-rounded"></span>
                 Import Produk
             </button>
-            <button data-modal-toggle="tambah-produk" type="button"
+            <button wire:click.prevent="add()" type="button"
                 class="text-white bg-[#DD3333] rounded-md px-4 py-2 text-sm flex items-center gap-3">
                 <span class="iconify" data-icon="ic:round-plus"></span>
                 Tambah Produk
@@ -49,8 +66,7 @@
                     <td class="py-4 px-6">
                         <div class="flex flex-row items-center font-semibold gap-5">
                             <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-white border">
-                                <img class="w-8 h-8" src="{{ asset('assets/images/produk/semen.png') }} "
-                                    alt="">
+                                <img class="w-8 h-8" src="{{ asset('assets/images/produk/semen.png') }}" alt="">
                             </div>
                             <div>
                                 <h1 class="truncate">Semen Dynamix 40kg</h1>
@@ -114,11 +130,11 @@
                 </tr>
                 @isset($data)
                     @foreach ($data as $dt)
-                        <tr>
+                        <tr class="bg-white border-b">
                             <td class="py-4 px-6">
                                 <div class="flex flex-row items-center font-semibold gap-5">
                                     <div class="w-10 h-10 flex items-center justify-center rounded-lg bg-white border">
-                                        <img class="w-8 h-8" src="{{ url('/product_image/' . $dt->image) }}" alt="">
+                                        <img class="w-8 h-8" src="{{ asset('storage/product_image/' . $dt->image) }}" alt="">
                                     </div>
                                     <div>
                                         <h1 class="truncate">{{ $dt->nama }}</h1>
@@ -136,9 +152,26 @@
                                 {{ $dt->harga }}
                             </td>
                             <td class="py-4 px-6 truncate font-semibold">
+                                {{-- <a href="{{ route('show-product', $dt->id) }}" target="_blank">detail</a><br>
+                                <a href="{{ route('edit-product', $dt->id) }}" target="_blank">edit</a><br>
+                                <a href="{{ route('delete-product', $dt->id) }}">delete</a><br> --}}
+                                <button wire:click.prevent="show({{ $dt->id }})" type="button"
+                                    class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="iconify w-5 h-5" data-icon="solar:document-text-bold-duotone"></span>
+                                    Detail
+                                </button><br>
+                                <button wire:click.prevent="deleteId({{ $dt->id }})" type="button"
+                                    class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="iconify w-5 h-5" data-icon="ic:twotone-delete"></span>
+                                    Hapus
+                                </button><br>
+                                <button wire:click.prevent="edit({{ $dt->id }})"
+                                    class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    <span class="iconify w-5 h-5"
+                                        data-icon="ph:pencil-simple-line-duotone"></span>Edit</button><br>
                                 <button id="dropdownMenuDetailToko" data-dropdown-toggle="dropdownDetailToko"
                                     class="inline-flex items-center p-1 text-sm font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                                    type="button">
+                                    type="button" style="display:none;">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -153,6 +186,7 @@
                                         aria-labelledby="dropdownMenuDetailToko">
                                         <li>
                                             <button data-modal-toggle="detail-produk" type="button"
+                                                wire:click.prevent="show({{ $dt->id }})"
                                                 class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                 <span class="iconify w-5 h-5"
                                                     data-icon="solar:document-text-bold-duotone"></span>
@@ -160,16 +194,17 @@
                                             </button>
                                         </li>
                                         <li>
-                                            <a data-modal-toggle="edit-produk" type="button"
-                                                href="{{ route('product-edit', $dt->id) }}"
+                                            <button data-modal-toggle="edit-produk" type="button"
+                                                wire:click.prevent="edit({{ $dt->id }})"
                                                 class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                 <span class="iconify w-5 h-5"
                                                     data-icon="ph:pencil-simple-line-duotone"></span>
                                                 Edit
-                                            </a>
+                                            </button>
                                         </li>
                                         <li>
                                             <button data-modal-toggle="hapus-produk" type="button"
+                                                wire:click.prevent="delete({{ $dt->id }})"
                                                 class="flex gap-2 items-center w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                                 <span class="iconify w-5 h-5" data-icon="ic:twotone-delete"></span>
                                                 Hapus

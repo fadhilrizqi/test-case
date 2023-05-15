@@ -1,4 +1,5 @@
 <!-- Main modal -->
+
 <div id="detail-produk" tabindex="-1" aria-hidden="true"
     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
@@ -29,7 +30,7 @@
                             <img class="w-24 h-24" src="{{ asset('assets/images/produk/semen.png') }} " alt="">
                         </div>
                         <div class="mb-5">
-                            <h1 class="font-bold text-gray-700">{{ $data->nama ?? 'Semen Dynamix 40kg' }}</h1>
+                            <h1 class="font-bold text-gray-700" wire:model="nama">{{ $data->nama ?? 'Semen Dynamix 40kg' }}</h1>
                             <span class="text-gray-500 text-sm">SKU: {{ $data->sku ?? 'P001' }}</span>
                         </div>
                         <div class="mb-5 max-w-lg">
